@@ -48,12 +48,39 @@ multi_ai_agent = Agent(
 # multi_ai_agent.print_response("Summarize analyst recommendation and share the latest news for IBM.",stream=True)
 # multi_ai_agent.print_response("Summarize analyst recommendation and share the latest news for qbts.",stream=True)
 
+### Added by BSW to customize the agent for user input
 
+# if __name__ == "__main__":
+#     symbol = input("Enter a stock symbol (e.g., IBM): ").strip()
+#     if symbol:
+#         prompt = f"Summarize analyst recommendation and share the latest news for {symbol}."
+#         multi_ai_agent.print_response(prompt, stream=True)
+#     else:
+#         print("No symbol entered.")
 
 if __name__ == "__main__":
-    symbol = input("Enter a stock symbol (e.g., IBM): ").strip()
-    if symbol:
+    while True:
+        symbol = input("Enter a stock symbol (e.g., IBM) or press Enter to exit: ").strip().upper()
+        if not symbol:
+            print("No symbol entered. Exiting.")
+            break
         prompt = f"Summarize analyst recommendation and share the latest news for {symbol}."
         multi_ai_agent.print_response(prompt, stream=True)
-    else:
-        print("No symbol entered.")
+        # response = multi_ai_agent.print_response(prompt, stream=True)
+        # response = multi_ai_agent.run(prompt, stream=True)
+        # print(response)
+
+# if __name__ == "__main__":
+#     while True:
+#         symbol = input("Enter a stock symbol (e.g., IBM) or press Enter to exit: ").strip()
+#         if not symbol:
+#             print("No symbol entered. Exiting.")
+#             break
+#         prompt = f"Summarize analyst recommendation and share the latest news for {symbol}."
+#         response = multi_ai_agent.run(prompt)
+#         # print(response)
+#         print("\n" + "="*60)
+#         print(f"📈 Analysis for {symbol.upper()}")
+#         print("="*60)
+#         print(response.strip())
+#         print("="*60 + "\n")
